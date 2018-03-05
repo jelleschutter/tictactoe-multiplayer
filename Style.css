@@ -1,0 +1,349 @@
+﻿body {
+    margin: 0;
+    font-family: sans-serif;
+    font-size: 23px;
+    max-width: 100vw;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+div.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 15px;
+}
+
+/* Tic Tac Toe Field */
+div.field {
+    box-sizing: initial;
+}
+
+div.row {
+    display: block;
+}
+
+div.row:not(:first-child) div.box {
+    border-top: 2px solid rgb(0,0,0);
+}
+
+div.row:not(:last-child) div.box {
+    border-bottom: 2px solid rgb(0,0,0);
+}
+
+div.box:not(:first-child) {
+    border-left: 2px solid rgb(0,0,0);
+}
+
+div.box:not(:last-child) {
+    border-right: 2px solid rgb(0,0,0);
+}
+
+div.box {
+    float: left;
+    box-sizing: border-box;
+}
+
+div.box::after {
+    content: '';
+    display: inline-block;
+    border-radius: 5%;
+}
+
+div.box.red::after {
+    background-color: rgb(255, 71, 71);
+}
+
+div.box.blue::after {
+    background-color: rgb(63, 61, 255);
+}
+
+@media (orientation: portrait) {
+    div.field {
+        width: 75vw;
+    }
+
+    div.box {
+        height: 25vw;
+        width: 25vw;
+    }
+
+    div.box::after {
+        margin: 2.5vw;
+        height: 20vw;
+        width: 20vw;
+    }
+}
+
+@media (orientation: landscape) {
+    div.field {
+        width: 45vh;
+    }
+
+    div.box {
+        height: 15vh;
+        width: 15vh;
+    }
+
+    div.box::after {
+        margin: 1.5vh;
+        height: 12vh;
+        width: 12vh;
+    }
+}
+
+/* Inputs */
+
+button, input, a.btn {
+    font-size: 0.8em;
+}
+
+input[type=text], input[type=password] {
+    max-width: 90vw;
+    display: block;
+    margin: 10px 0;
+    padding: 5px;
+    border:  2px black solid;
+    border-radius: 5px;
+}
+
+input::placeholder {
+    text-transform: none;
+}
+
+button, input[type=submit], a.btn {
+    width: 100%;
+    display: block;
+    margin: 10px 0;
+    padding: 5px;
+    border:  2px black solid;
+    border-radius: 5px;
+    color: white;
+    background-color: black;
+    text-decoration: none;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+button:hover, input[type=submit]:hover, a.btn:hover {
+    color: black;
+    background-color: white;
+}
+
+input[name=username] {
+    text-transform: lowercase;
+}
+
+/* Navbar */
+
+header {
+    color: white;
+    background: rgb(17, 17, 17);
+    overflow: hidden;
+}
+
+header a {
+    color: white;
+    float: left;
+    padding: 15px;
+    text-decoration: none;
+}
+
+header a:last-child {
+    float: right;
+}
+
+/* Dashboard */
+
+div.dashboard {
+    max-width: 90vw;
+    margin: 0 auto;
+}
+
+div.dashboard div.game {
+    margin: 10px 0;
+    background-color: rgb(240, 240, 240);
+    padding: 10px;
+    border: 2px solid rgb(200, 200, 200);
+    border-radius: 5px;
+    transition-duration: 0.3s;
+}
+
+div.dashboard div.game:hover {
+    background-color: rgb(220, 220, 220);
+    border: 2px solid rgb(180, 180, 180);
+}
+
+div.dashboard div.game a {
+    color: rgb(60, 60, 60);
+    text-decoration: none;
+}
+
+div.dashboard div.game a div.game-data:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+div.dashboard div.game a div.game-data div {
+    width: calc(100% / 3);
+    padding: 3px;
+    float: left;
+    text-align: center;
+}
+
+div.dashboard div.game a div.game-data div:nth-child(2) {
+    border-left: 2px solid rgb(200, 200, 200);
+    border-right: 2px solid rgb(200, 200, 200);
+}
+
+/* After Game Window  */
+
+.end-game:not(.display) {
+    display: none;
+}
+
+.end-game {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: rgb(255, 255, 255);
+    padding: 15px;
+    border-radius: 10px;
+    border: 5px solid black;
+    text-align: center;
+}
+
+.end-game span.winner {
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.end-game.red span.winner {
+    background-color: rgb(255, 71, 71);
+}
+
+.end-game.blue span.winner {
+    background-color: rgb(63, 61, 255);
+}
+
+.end-game.draw span.winner {
+    background-color: rgb(112, 112, 112);
+}
+
+
+/* New Game */
+
+input#opponent {
+    margin-bottom: 0;
+}
+
+div#complete div.user {
+    font-size: 0.8em;
+    background-color: rgb(240, 240, 240);
+    padding: 5px;
+    border: 2px solid rgb(200, 200, 200);
+    text-align: center;
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+div#complete div.user:hover {
+    background-color: rgb(220, 220, 220);
+    border: 2px solid rgb(180, 180, 180);
+}
+
+div#complete div.user:first-child {
+    border-radius: 10px 10px 0 0;
+}
+
+div#complete div.user:not(:first-child) {
+    border-top: none;
+}
+
+div#complete div.user:last-child {
+    border-radius: 0 0 10px 10px;
+}
+
+div#complete div.user:only-child {
+    border-radius: 10px;
+}
+
+/* Miscellaneous */
+
+.text-center {
+    text-align: center;
+}
+
+input:focus {
+    outline: none;
+}
+
+hr {
+    border: none;
+    height: 2px;
+    background: -webkit-gradient(linear, 0 0, 100% 0, from(rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 0)), color-stop(50%, black))
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td,th {
+    padding: 7px;
+    border: 2px solid black;
+}
+
+/* Snackbar from https://www.w3schools.com/howto/howto_js_snackbar.asp */
+
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #333; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+    visibility: visible; /* Show the snackbar */
+
+/* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
