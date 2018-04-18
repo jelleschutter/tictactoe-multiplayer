@@ -47,11 +47,10 @@
     function getPlayer() {
         $game = getGame();
         $db = getDB();
-        $sql = "SELECT username FROM user WHERE user_id = " . $_SESSION["user_id"] . "";
+        $sql = "SELECT user_id, username FROM user WHERE user_id = " . $_SESSION["user_id"] . "";
         $playerData = $db->query($sql);
-
         $player = $playerData->fetch_assoc();
-        return $player["user_id"];
+        return $player;
     }
 
     function getOpponent() {
