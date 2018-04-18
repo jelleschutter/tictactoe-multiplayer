@@ -44,6 +44,16 @@
         return $content;
     }
 
+    function getPlayer() {
+        $game = getGame();
+        $db = getDB();
+        $sql = "SELECT username FROM user WHERE user_id = " . $_SESSION["user_id"] . "";
+        $playerData = $db->query($sql);
+
+        $player = $playerData->fetch_assoc();
+        return $player["user_id"];
+    }
+
     function getOpponent() {
         $game = getGame();
         $db = getDB();
